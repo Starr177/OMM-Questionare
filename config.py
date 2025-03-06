@@ -1,6 +1,6 @@
 class config():
-    database_username = 'mckays33'
-    database_pass = 'RowOMM!23'
+    database_username = ''
+    database_pass = 'password'
     database_host = "localhost"
-    database = 'omm'
+    database = 'Software_Eng'
     upload_folder = 'static/question_images'

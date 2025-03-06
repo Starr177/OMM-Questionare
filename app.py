@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for, session,  
 from signup import signUpUser
 from config import config
 import os
-import datetime 
+import datetime
 from DatabaseFunctions import get_attempts, get_question, is_question_active
 from Objects import Answer, Question
 from login import userLogin
@@ -70,7 +70,7 @@ def editQuestion(id):
     #Redirect user to an editable question, only active questions are editable.
     if (is_question_active.is_active(id)):
         return editQuestionByID(id, UPLOAD_FOLDER)
-    
+
     return render_template("404.html", msg = "Question does not exist", user_state = session.get('user_state'))
 
 
@@ -108,7 +108,7 @@ def createTest():
 
 #User is going to take test
 @app.route('/test', methods = ['GET', 'POST'])
-@app.route('/test.html', methods = ['GET', 'POST']) 
+@app.route('/test.html', methods = ['GET', 'POST'])
 def take_test():
 
     test_id = request.args.get('test_id')
@@ -129,7 +129,7 @@ def take_test():
 
 #Testing Environment for taking a test
 @app.route('/testTemp', methods = ['GET', 'POST'])
-@app.route('/testTemp.html', methods = ['GET', 'POST']) 
+@app.route('/testTemp.html', methods = ['GET', 'POST'])
 def take_temp_test():
 
     test_id = 43
@@ -186,7 +186,7 @@ def viewAttempt(test_id, attempt_num):
 def success_page():
     question_id = session.get('edited_question_id')
     question = get_question.getquestionfromdatabase(question_id, UPLOAD_FOLDER)
-    
+
     return render_template('success_page.html', question = question, user_state = session.get('user_state'))
 
 #   User wants to go to view tests
@@ -198,7 +198,7 @@ def viewTests():
     cnx = dc.makeConnection()
 
     attempts = get_attempts.getAttempts(cnx, user_id)
-    
+
     return render_template('viewTests.html', attempts = attempts, user_state = session.get('user_state'))
 
 
