@@ -1,5 +1,5 @@
 class config():
-    database_username = ''
+    database_username = 'root'
     database_pass = 'password'
     database_host = "localhost"
     database = 'omm'
